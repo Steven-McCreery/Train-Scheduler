@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<!-- linking bootstrap CSS and additional styling -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- linking to jQuery CDN, Bootstrap's js, firebase, and momentjs -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" integrity="sha256-zG8v+NWiZxmjNi+CvUYnZwKtHzFtdO8cAKUIdB8+U9I=" crossorigin="anonymous"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+	<div class="container">
+		<div id="viewSelect" class="modal fade" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h4 class="modal-title">Choose View Method</h4>
+					</div>
+
+					<div class="modal-body">
+						
+						<!-- Centered Pills -->
+						<ul class="nav nav-pills nav-justified">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#">Review Display</a></li>
+							<li><a href="#">Admin Display</a></li>
+						</ul>
+
+					</div>
+
+				</div> <!-- closes modal content -->
+			</div> <!-- closes modal dialog -->
+		</div> <!-- closes modal -->
+	</div> <!-- closes container for modal -->
+
+	<div class="container">
+
+		<div class="row">
+			<div class="column col col-xs-12 jumbotron text-center" id="title">
+				<h1>Train Schedule</h1>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+</body>
+<!-- link to this app's js file -->
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+</html>
