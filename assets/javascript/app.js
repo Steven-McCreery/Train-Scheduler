@@ -46,6 +46,8 @@ $(document).ready(function() {
 	// define database
 	var database = firebase.database();
 
+	
+
 	// push to firebase and prevent submit's default reload
 	$("#add-train").on("click", function(event) {
 		$("tbody").empty();
@@ -54,6 +56,12 @@ $(document).ready(function() {
 		var destination = $("#destination-input").val().trim();
 		var firstTrainTime = $("#ftt-input").val().trim();
 		var frequency = $("#frequency-input").val().trim();
+
+		// momentjs items
+		
+		// var yesterDay;
+		// var timeDiff;
+		// var remainder;
 
 		database.ref().push({
 			trainName: trainName,
@@ -66,34 +74,26 @@ $(document).ready(function() {
 		// clear input sections back to placeholder
 		$("input").val("");
 
-		// child added update function
-		database.ref().on("child_added", function(childSnapshot) {
-			// console.log(JSON.parse(childSnapshot));
-			console.log(childSnapshot.val().trainName);
-			console.log(childSnapshot.val().destination);
-			console.log(childSnapshot.val().firstTrainTime);
-			console.log(childSnapshot.val().frequency);
-		},function(errorObject) {
-			// console.log(errorObject.code);
-		});
-
 
 		// ordering display area
-		database.ref().orderByChild("dateAdded").limitToLast(15).on("child_added", function(snapshot) {
+		database.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", function(snapshot) {
+			var timeNow = moment().format("HHmm");
+			var yesterDay = moment(snapshot.val().firstTrainTime, "HHmm").subtract(1,"Day");
+			var timeDiff = moment(yesterDay, "minutes").diff(timeNow, "minutes");
+			console.log(timeDiff);
+			var remainder = timeDiff % snapshot.val().frequency;
+			console.log(remainder);
+			var nextTrainWait = snapshot.val().frequency - remainder;
+			var nextTrainArrive = moment().add(nextTrainWait, "minutes").format("HHmm");
 			$("tbody").prepend(
-					"<tr><td>" + snapshot.val().trainName + "</td><td>" + 
-					snapshot.val().destination + "</td><td>" + 
-					"snapshot.val().firstTrainTime" + "</td><td>" + 
-					snapshot.val().frequency + "</td><td>" + 
-					"snapshot.val().firstTrainTime" + "</td></tr>"
-				)
-			// console.log(JSON.parse(snapshot));
+				"<tr><td>" + snapshot.val().trainName + "</td><td>" + 
+				snapshot.val().destination + "</td><td>" + 
+				snapshot.val().frequency + "</td><td>" + 
+				nextTrainArrive + "</td><td>" + 
+				nextTrainWait + "</td></tr>"
+			)
 		})
 	})
-
-
-	
-
 
 
 
