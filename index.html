@@ -35,8 +35,8 @@
 
 						<!-- Centered Pills -->
 						<ul class="nav nav-pills nav-justified">
-							<li class="" id"review"><a href="#">Review Display</a></li>
-							<li class="" id="admin"><a href="#">Admin Display</a></li>
+							<li class=""><a href="#" id="review">Review Display</a></li>
+							<li class=""><a href="#" id="admin">Admin Display</a></li>
 						</ul>
 
 					</div>
@@ -51,8 +51,75 @@
 		<div class="row">
 			<div class="column col col-xs-12 jumbotron text-center" id="title">
 				<h1>Train Schedule</h1>
+				<span class=""><button class="btn btn-block btn-danger" id="viewChange">Change Display Mode</button></span>
 			</div>
 		</div>
+
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+
+			<!-- admin panel-->
+			<div class="col-xs-4 pull-left" id="adminEntry">
+				<div class="panel panel-success">
+
+					<div class="panel-heading">
+						<h2 class="panel-title">Train Admin: Input Section</h2>
+					</div>
+
+					<div class="panel-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="name-input">Train Name:</label>
+								<input class="form-control" id="name-input" type="text">
+							</div>
+
+							<div class="form-group">
+								<label for="destination-input">Destination:</label>
+								<input class="form-control" id="destination-input" type="text">
+							</div>
+
+							<div class="form-group">
+								<label for="ftt-input">First Train Time <br>[Military Time: (0600 = 6 AM, 1835 = 6:35 PM)]</label>
+								<input class="form-control" id="ftt-input" type="number">
+							</div>
+
+							<div class="form-group">
+								<label for="frequency-input">Train Frequency (in minutes)</label>
+								<input class="form-control" id="frequency-input" type="number">
+							</div>
+
+							<button class="btn btn-primary" id="add-train" type="submit">Submit</button>
+						</form>
+					</div> <!-- close panel body -->
+				</div> <!-- close admin panel -->
+			</div> <!-- close column -->
+
+			<!-- train schedule display -->
+			<div class="col-xs-8 pull-right" id="schedule">
+				<div class="panel panel-success">
+
+					<div class="panel-heading">
+						<h2 class="panel-title">Train Schedule!</h2>
+					</div>
+
+					<div class="panel-body" id="recent-member">
+						<table class="table table-responsive table-stripped table-hover">
+							<thead>
+								<th>Train Name</th>
+								<th>Destination</th>
+								<th>Frequency (min)</th>
+								<th>Next Arrival</th>
+								<th>Minutes Away</th>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>
 
 	</div>
 
