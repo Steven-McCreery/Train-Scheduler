@@ -6,8 +6,13 @@ $(document).ready(function() {
 
 	selectViewModal();
 
+	$("li").on("click", function() {
+		if ($(this).hasClass("review")) {
 
-
+		}else{
+			
+		}
+	})
 
 
 
