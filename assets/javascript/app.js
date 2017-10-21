@@ -1,11 +1,14 @@
 $(document).ready(function() {
 
+	// display modal function
 	var selectViewModal = function() {
 		$("#viewSelect").modal("show");
 	}
 
+	// call show modal on load
 	selectViewModal();
 
+	// click function to change display on modal decision
 	$("a").on("click", function() {
 		$("li").removeClass("active");
 		$(this).parent().addClass("active");
@@ -23,6 +26,7 @@ $(document).ready(function() {
 		}
 	})
 
+	// change display mode
 	$("#viewChange").on("click", function() {
 		selectViewModal();
 	})
@@ -39,9 +43,12 @@ $(document).ready(function() {
 		};
 	firebase.initializeApp(config);
 
+	// define database
 	var database = firebase.database();
 
+	// push to firebase and prevent submit's default reload
 	$("#add-train").on("click", function(event) {
+		$("tbody").empty();
 		event.preventDefault();
 		var trainName = $("#name-input").val().trim();
 		var destination = $("#destination-input").val().trim();
@@ -56,14 +63,34 @@ $(document).ready(function() {
 			dateAdded: firebase.database.ServerValue.TIMESTAMP
 		});
 
-		database.ref().on("child_added", function(childSnapshot) {
-			return;
-		})
+		// clear input sections back to placeholder
+		$("input").val("");
 
+		// child added update function
+		database.ref().on("child_added", function(childSnapshot) {
+			// console.log(JSON.parse(childSnapshot));
+			console.log(childSnapshot.val().trainName);
+			console.log(childSnapshot.val().destination);
+			console.log(childSnapshot.val().firstTrainTime);
+			console.log(childSnapshot.val().frequency);
+		},function(errorObject) {
+			// console.log(errorObject.code);
+		});
+
+
+		// ordering display area
 		database.ref().orderByChild("dateAdded").limitToLast(15).on("child_added", function(snapshot) {
-			return;
+			$("tbody").prepend(
+					"<tr><td>" + snapshot.val().trainName + "</td><td>" + 
+					snapshot.val().destination + "</td><td>" + 
+					"snapshot.val().firstTrainTime" + "</td><td>" + 
+					snapshot.val().frequency + "</td><td>" + 
+					"snapshot.val().firstTrainTime" + "</td></tr>"
+				)
+			// console.log(JSON.parse(snapshot));
 		})
 	})
+
 
 	
 
