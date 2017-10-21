@@ -1,0 +1,11 @@
+body {
+	background-image: url("../images/vintage-concrete.png");
+}
+
+#pb1 {
+	background-color: lightblue;
+}
+
+.jumbotron {
+	background-color: darkgray;
+}

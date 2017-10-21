@@ -51,7 +51,7 @@
 		<div class="row">
 			<div class="column col col-xs-12 jumbotron text-center" id="title">
 				<h1>Train Schedule</h1>
-				<span class=""><button class="btn btn-block btn-danger" id="viewChange">Change Display Mode</button></span>
+				<span class=""><button class="btn btn-lg btn-block btn-danger" id="viewChange">Change Display Mode</button></span>
 			</div>
 		</div>
 
@@ -62,14 +62,14 @@
 		<div class="row">
 
 			<!-- admin panel-->
-			<div class="col-xs-4 pull-left" id="adminEntry">
+			<div class="col-xs-4 pull-left hidden" id="adminEntry">
 				<div class="panel panel-success">
 
 					<div class="panel-heading">
 						<h2 class="panel-title">Train Admin: Input Section</h2>
 					</div>
 
-					<div class="panel-body">
+					<div class="panel-body" id="pb1">
 						<form role="form">
 							<div class="form-group">
 								<label for="name-input">Train Name:</label>
@@ -82,12 +82,12 @@
 							</div>
 
 							<div class="form-group">
-								<label for="ftt-input">First Train Time <br>[Military Time: (0600 = 6 AM, 1835 = 6:35 PM)]</label>
+								<label for="ftt-input">First Train Time: <br>[Military Time: (0600 = 6 AM, 1835 = 6:35 PM)]</label>
 								<input class="form-control" id="ftt-input" type="number" placeholder="0000">
 							</div>
 
 							<div class="form-group">
-								<label for="frequency-input">Train Frequency (in minutes)</label>
+								<label for="frequency-input">Train Frequency: (in minutes)</label>
 								<input class="form-control" id="frequency-input" type="number" placeholder="10">
 							</div>
 
@@ -98,7 +98,7 @@
 			</div> <!-- close column -->
 
 			<!-- train schedule display -->
-			<div class="col-xs-8 pull-right" id="schedule">
+			<div class="col-xs-8 pull-right hidden" id="schedule">
 				<div class="panel panel-success">
 
 					<div class="panel-heading">
@@ -106,7 +106,7 @@
 					</div>
 
 					<div class="panel-body" id="recent-member">
-						<table class="table table-responsive table-stripped table-hover">
+						<table class="table table-responsive table-striped table-hover">
 							<thead>
 								<th>Train Name</th>
 								<th>Destination</th>
